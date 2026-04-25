@@ -1225,65 +1225,8 @@ hero: { minHeight: "70vh", display: "flex", alignItems: "center", justifyContent
 
           </div>
         )}
-            <section style={styles.catSection}>
-              <h2 style={styles.sectionTitle}>Collections</h2>
-              <div style={styles.catGrid} className="cat-grid">
-                {categories.map((c, i) => (
-                  <div key={c.key} onClick={() => navigate("category", c.key)} style={{ ...styles.catCard, animationDelay: `${i * 0.1}s` }} role="button" tabIndex={0}>
-                    <div style={styles.catCardInner}>
-                
-                      <h3 style={styles.catName}>{c.label}</h3>
           
-                      <div style={styles.catArrow}><ArrowIcon theme={currentTheme} /></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section style={{ padding: "80px 0", borderTop: `1px solid ${theme.border}` }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 32, marginBottom: 48, flexWrap: "wrap" }}>
-                <h2 style={{ ...styles.sectionTitle, marginBottom: 0 }}>Shop All</h2>
-                <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                  {[{ key: "all", label: "All" }, ...categories].map((tab) => (
-                    <button key={tab.key} onClick={() => setShopFilter(tab.key)} style={{ background: "none", border: "none", fontFamily: "'Karla', sans-serif", fontSize: 12, letterSpacing: ".1em", textTransform: "uppercase", cursor: "pointer", color: theme.text, padding: "4px 0", borderBottom: shopFilter === tab.key ? `2px solid ${theme.accent}` : "2px solid transparent", opacity: shopFilter === tab.key ? 1 : 0.4, transition: "all .2s" }}>{tab.label}</button>
-                  ))}
-                </div>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 24 }}>
-                {(() => {
-                  const allProducts = [];
-                  const catsToShow = shopFilter === "all" ? Object.keys(products) : [shopFilter];
-                  catsToShow.forEach((catKey) => {
-                    if (products[catKey]) {
-                      products[catKey].forEach((p) => allProducts.push({ ...p, _catKey: catKey }));
-                    }
-                  });
-                  return allProducts.map((p, i) => (
-                    <div key={p.id || p._id} className="prod-card" onClick={() => navigate("product", p._catKey, p)} style={{ ...styles.prodCard, animationDelay: `${i * 0.06}s`, opacity: 0 }} role="button" tabIndex={0}>
-                      <div style={{ overflow: "hidden", marginBottom: 16, position: "relative" }}>
-                        <div style={{ width: "100%", aspectRatio: "1/1", background: theme.placeholder, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", borderRadius: 4 }}>
-                         <ProductImage src={getImageUrl(p.mainImage || p.img)} alt={p.name} theme={currentTheme} />
-                        </div>
-                      </div>
-                      <div style={{ paddingBottom: 8 }}>
-                        <span style={{ fontSize: 9, letterSpacing: ".12em", textTransform: "uppercase", color: theme.textMuted, display: "block", marginBottom: 4 }}>{getCategoryLabel(p._catKey)}</span>
-                        <h3 className="prod-name" style={{ ...styles.prodName, fontSize: 18 }}>{p.name}</h3>
-                        <p style={styles.prodPrice}>{formatPrice(p.price)}</p>
-                      </div>
-                    </div>
-                  ));
-                })()}
-              </div>
-            </section>
-
-            <section style={styles.ethosSection}>
-              <div style={styles.ethosGrid}>
-                {[{n:"01",t:"Made to Order",d:"Nothing prefabricated. Each piece begins only when you say so."},{n:"02",t:"Your Specifications",d:"Material, fabric, colour, size — every detail shaped by you."},{n:"03",t:"Delivered with Care",d:"White-glove delivery across Nigeria. Assembled in your space."}].map(e => (
-                  <div key={e.n} style={styles.ethosItem}><span style={styles.ethosNum}>{e.n}</span><h4 style={styles.ethosTitle}>{e.t}</h4><p style={styles.ethosText}>{e.d}</p></div>
-                ))}
-              </div>
-            </section>
+            
           </div>
         )}
 
